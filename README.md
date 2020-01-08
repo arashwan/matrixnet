@@ -2,8 +2,16 @@
 
 MatrixNets is an apsect ratio aware deep learning architecture for object detection. We implemented matrixnets anchors and corners. For more details please refer to the papers linked below.
 
-<p aligh="center"><img src="https://github.com/arashwan/matrixnet/blob/master/images/figure5.png" height="250px">
-<img src="https://github.com/arashwan/matrixnet/blob/master/images/figure6.png" height="250px">
+
+<p align="center">
+<img src="https://github.com/arashwan/matrixnet/blob/master/images/figure5.png" height="250px">
+  </p>
+  
+ We have two implementations based on Corners and Anchor:
+<p align="center">      <img src="https://github.com/arashwan/matrixnet/blob/master/images/figure6.png" height="200px" caption=
+                             "Corners"> 
+<img src="https://github.com/arashwan/matrixnet/blob/master/images/figure_centers.png" height="200px"> 
+
   </p>
 
 ### Training and Evaluation Code
@@ -98,14 +106,14 @@ python train.py MatrixNetsCorners
 
 To use the trained model:
 ```
-python test.py MatrixNetsCorners --testiter 500000 --split validation
+python test.py MatrixNetsCorners --testiter <iter> --split validation
 ```
 
 If you want to test different hyperparameters in testing and do not want to overwrite the original configuration file, you can do so by creating a configuration file with a suffix (`<model>-<suffix>.json`). You **DO NOT** need to create `<model>-<suffix>.py` in `models/`.
 
 To use the new configuration file:
 ```
-python test.py <model> --testiter <iter> --split <split> --suffix <suffix>
+python test.py <model> --testiter <iter> --split <split> 
 ```
 
 ### Pretrained Models
