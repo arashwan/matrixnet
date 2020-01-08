@@ -1,6 +1,6 @@
 ## MatrixNets
 
-MatrixNets is an apsect ratio aware deep learning architecture for object detection. We implemented matrixnets anchors and corners. For more details please refer to the papers linked below.
+MatrixNets is an aspect ratio aware deep learning architecture for object detection. We implemented matrixnets anchors and corners. For more details, please refer to the papers linked below.
 
 
 <p align="center">
@@ -24,11 +24,11 @@ Code for reproducing the results in the following paper:
 
 ### Selecting Layers in MatrixNets
 
-One of the capabiltites offered by MatrixNets is to be able to choose whic layers to use for training and inference. This means that the user can choose which scales of the image to use for training and testing. `The layer_range` is defined as a 3D matrix  were the outer matrix is 5x5 and each entry of this matrix is either a 1D matrix of [y_min, y_max, x_min, x_max] or -1 if we do not want to include this layer.
+One of the capabilities offered by MatrixNets is to be able to choose which layers to use for training and inference. This means that the user can choose which scales of the image to use for training and testing. `The layer_range` is defined as a 3D matrix were the outer matrix is 5x5, and each entry of this matrix is either a 1D matrix of [y_min, y_max, x_min, x_max] or -1 if we do not want to include this layer.
 
 Example 1:
 
-In the paper we use a 19-layer MatrixNet by ignoring the left top and bottom right corners of the 5x5 matrix.
+In the paper, we use a 19-layer MatrixNet by ignoring the left top and bottom right corners of the 5x5 matrix.
 
 The corresonding layer range would look like:
 
@@ -63,18 +63,18 @@ Please first install Anaconda and create an Anaconda environment using the provi
 conda create --name matrixnets --file packagelist_conda.txt
 ```
 
-After you create the environment, activate it.
+After one creates the environment, activate it.
 ```
 source activate matrixnets
 ```
 #### Using Pip
-Alternatively you can use pip and install  all packages from the requirements file. Note we're using python 3.6+. Torch 1.2.0 and torchvision 0.4.0
+Alternatively, one can use pip and install all packages from the requirements file. Note we are using python 3.6+. Torch 1.2.0 and torchvision 0.4.0
 
 ```
 pip install -r requirements.txt
 ```
 
-Our current implementation only supports GPU so you need a GPU and need to have CUDA(9+)  installed on your machine.
+Our current implementation only supports GPU, so one needs a GPU and need to have CUDA(9+)  installed on your machine.
 
 ### Compiling NMS
 You also need to compile the NMS code (originally from [Faster R-CNN](https://github.com/rbgirshick/py-faster-rcnn/blob/master/lib/nms/cpu_nms.pyx) and [Soft-NMS](https://github.com/bharatsingh430/soft-nms/blob/master/lib/nms/cpu_nms.pyx)).
@@ -90,7 +90,7 @@ make
 - Copy the training/validation/testing images to the corresponding directories according to the annotation files
 
 ## Training and Evaluation
-To train and evaluate a network, you will need to create a configuration file, which defines the hyperparameters, and a model file, which defines the network architecture. The configuration file should be in JSON format and placed in `config/`. Each configuration file should have a corresponding model file in `models/` (specified ny `snapshot_name` in the config file). i.e. 
+To train and evaluate a network, one will need to create a configuration file, which defines the hyperparameters, and a model file, which defines the network architecture. The configuration file should be in JSON format and placed in `config/`. Each configuration file should have a corresponding model file in `models/` (specified by `snapshot_name` in the config file). i.e. 
 
 To train a model:
 ```
@@ -111,7 +111,7 @@ python test.py <config_file> --testiter <iter> --split validation
 
 ### Pretrained Models
 
-We provide pretrained models for Resnet-50 and Resnet-152 for both Anchors and Cornnets.
+We provide pre-trained models for Resnet-50 and Resnet-152 for both Anchors and Corners.
 
 [Resnet-50+Corners](https://dl.dropboxusercontent.com/s/zmhhvtm2wvf78qv/MatrixNetCorners_Resnet50.pkl)  
 [Resnet-152+Corners](https://dl.dropboxusercontent.com/s/zmhhvtm2wvf78qv/MatrixNetCorners_Resnet152.pkl)  
@@ -123,9 +123,9 @@ Please copy the pre-trained models into the following directory under matrixnets
 
 'matrixnets/<cache_dir>/nnet/<model_name>/<name>'
 
-Here `cache_name` is the name of the directory specidfied in `config.json` and `name` should be in the format `<model_iters.pkl>`
+Here `cache_name` is the name of the directory specified in `config.json` and `name` should be in the format `<model_iters.pkl>`
 
-Note that the results might be slightly differnt than the paper (+/- 0.2 MAP) since we reproduced all experiments using only 4 gpus. We couldn't fit batch size of 23 for the anchors experiments, so we ran the experiments for longer iterations to compansate for the smaller batch size.
+Note that the results might be slightly different from the paper (+/- 0.2 MAP) since we reproduced all experiments using only 4 GPUs. We could not fit the batch size of 23 for the anchors' experiments, so we ran the experiments for longer iterations to compensate for the smaller batch size.
 
 List of avialble configuration options:
 
