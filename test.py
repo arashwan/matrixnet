@@ -72,7 +72,6 @@ if __name__ == "__main__":
     with open(cfg_file, "r") as f:
         configs = json.load(f)
             
-    configs["system"]["model_name"] = args.cfg_file
     system_configs.update_config(configs["system"])
 
     train_split = system_configs.train_split
