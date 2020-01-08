@@ -1,0 +1,87 @@
+{
+    "system": {
+        "dataset": "MSCOCO",
+        "batch_size": 23,
+        
+	"model_name": "MatrixNetCorners",
+        "train_split": "train2017",
+        "val_split": "val2017",
+
+        "learning_rate": 0.00005,
+        "decay_rate": 10,
+
+        "val_iter": 100,
+
+        "opt_algo": "adam",
+        "prefetch_size":6,
+
+        "max_iter": 350000,
+        "stepsize": 300000,
+        "snapshot": 10000,
+
+        "chunk_sizes": [5,6,6,6],
+        "cache_dir" : "./MatrixNetCornersResnet50_48LayerRange_512isize",
+	"data_dir": "./data/"
+    },
+
+    "db": {
+        "rand_scale_min": 0.6,
+        "rand_scale_max": 1.4,
+        "rand_scale_step": 0.1,
+        "rand_scales": null,
+
+        "rand_crop": true,
+        "rand_color": true,
+
+        "border": 128,
+        "gaussian_bump": true,
+        "gaussian_iou": 0.3,
+        
+        "input_size": [512, 512],
+      
+        "output_kernel_size": 3,
+                         
+                          
+                           
+         "base_layer_range":[24,48,24,48],  
+
+         "layers_range": [[[0,48,0,48],[48,96,0,48],[96,192,0,48], -1, -1],
+		 [[0,48,48,96],[48,96,48,96],[96,192,48,96],[192,384,0,96], -1],
+		 [[0,48,96,192],[48,96,96,192],[96,192,96,192],[192,384,96,192],[384,2000,96,192]],
+		 [-1, [0,96,192,384],[96,192,192,384],[192,384,192,384],[384,2000,192,384]],
+		 [-1, -1, [0,192,384,2000],[192,384,384,2000],[384,2000,384,2000]]] ,
+        
+
+        "test_scales": [1],
+	"test_image_max_dim":900,
+	"test_flip_images":true,
+	"cutout":true,
+        "top_k": 50,
+        "categories": 80,
+        "matching_threshold": 0.2,
+        "nms_threshold": 0.5,
+        "max_per_image": 100,
+        "merge_bbox": true,
+        "weight_exp": 6,
+	"backbone": "resnet50"
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
