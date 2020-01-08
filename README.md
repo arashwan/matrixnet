@@ -172,4 +172,4 @@ List of avialble configuration options:
 
 ## Acknowledgements
 
-We would like to thank [CornetNets](https://github.com/princeton-vl/CornerNet)
+Our code is based on [CornetNets](https://github.com/princeton-vl/CornerNet)
