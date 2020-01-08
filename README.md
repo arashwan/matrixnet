@@ -121,7 +121,7 @@ We provide pretrained models for Resnet-50 and Resnet-152 for both Anchors and C
 
 Please copy the pre-trained models into the following directory under matrixnets.
 
-'matrixnets/<cache_dir>/nnet/<name>'
+'matrixnets/<cache_dir>/nnet/<model_name>/<name>'
 
 Here `cache_name` is the name of the directory specidfied in `config.json` and `name` should be in the format `<model_iters.pkl>`
 
