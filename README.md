@@ -94,26 +94,19 @@ To train and evaluate a network, you will need to create a configuration file, w
 
 To train a model:
 ```
-python train.py <config>
+python train.py <config_file>
 ```
 
 We provide the configuration file (`MatrixNetsCorners.json`). 
 
-To train MatrixNetsCorners:
+To train MatrixNetsCorners with Resnet50:
 ```
-python train.py MatrixNetsCorners
-```
-
-To use the trained model:
-```
-python test.py MatrixNetsCorners --testiter <iter> --split validation
+python train.py MatrixNetsCornersResnet50
 ```
 
-If you want to test different hyperparameters in testing and do not want to overwrite the original configuration file, you can do so by creating a configuration file with a suffix (`<model>-<suffix>.json`). You **DO NOT** need to create `<model>-<suffix>.py` in `models/`.
-
-To use the new configuration file:
+To evaluate the trained model:
 ```
-python test.py <model> --testiter <iter> --split <split> 
+python test.py <config_file> --testiter <iter> --split validation
 ```
 
 ### Pretrained Models
