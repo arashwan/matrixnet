@@ -7,7 +7,7 @@ MatrixNets is an apsect ratio aware deep learning architecture for object detect
 <img src="https://github.com/arashwan/matrixnet/blob/master/images/figure5.png" height="250px">
   </p>
   
- We have two implementations based on Corners and Anchor:
+ We have two implementations based on Corners and Anchor-Centers:
 <p align="center">      <img src="https://github.com/arashwan/matrixnet/blob/master/images/figure6.png" height="200px" caption=
                              "Corners"> 
 <img src="https://github.com/arashwan/matrixnet/blob/master/images/figure_centers.png" height="200px"> 
