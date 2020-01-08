@@ -2,9 +2,9 @@
 
 MatrixNets is an apsect ratio aware deep learning architecture for object detection. We implemented matrixnets anchors and corners. For more details please refer to the papers linked below.
 
-![alt text](https://github.com/arashwan/matrixnets/images/figure5.png)
-![alt text](https://github.com/arashwan/matrixnets/images/figure6.png)
-
+<p aligh="center"><img src="https://github.com/arashwan/matrixnet/blob/master/images/figure5.png" height="250px">
+<img src="https://github.com/arashwan/matrixnet/blob/master/images/figure6.png" height="250px">
+  </p>
 
 ### Training and Evaluation Code
 
@@ -43,7 +43,7 @@ Following table gives the AP for Corners and Anchors with different backbones (f
 
 ### Sample Images
 
-![alt text](https://github.com/arashwan/matrixnets/images/figure7.png)
+![alt text](https://github.com/arashwan/matrixnet/blob/master/images//figure7.png)
 
 
 ## Getting Started
@@ -120,9 +120,9 @@ We provide pretrained models for Resnet-50 and Resnet-152 for both Anchors and C
 
 Please copy the pre-trained models into the following directory under matrixnets.
 
-'matrixnets/<data_dir>/nnet/<name>'
+'matrixnets/<cache_dir>/nnet/<name>'
 
-Here `dir_name` is the name of the directory specidfied in `config.json` and `name` should be in the format `<model_iters.pkl>`
+Here `cache_name` is the name of the directory specidfied in `config.json` and `name` should be in the format `<model_iters.pkl>`
 
 Note that the results might be slightly differnt than the paper (+/- 0.2 MAP) since we reproduced all experiments using only 4 gpus. We couldn't fit batch size of 23 for the anchors experiments, so we ran the experiments for longer iterations to compansate for the smaller batch size.
 
@@ -167,4 +167,8 @@ List of avialble configuration options:
 |max_per_image| Max detections per image  | |
 |merge_bbox| Merge bbox flag| True, False|
 |weight_exp| exponential weighting specification  | |
-|backbone|  Backbone for Matrix Nets| resnet50, resnet100, resnet152, resnext101  |
+|backbone|  Backbone for Matrix Nets| resnet50, resnet100, resnet152, resnext101  
+
+## Acknowledgements
+
+We would like to thank [CornetNets](https://github.com/princeton-vl/CornerNet)
