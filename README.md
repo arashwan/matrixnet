@@ -48,6 +48,8 @@ Following table gives the AP for Corners and Anchors with different backbones (f
 |Resnet-101-X  |42.3 | 42.3 |
 |Resnet-152-X | 43.6 | 44.7|
 
+Note that these numbers are reported from the validation set, whereas the final numbers in the paper are reported on the test set. 
+
 ### Sample Images with Detections for both Architectures
 
 ![alt text](https://github.com/arashwan/matrixnet/blob/master/images//figure7.png)
@@ -168,6 +170,12 @@ List of avialble configuration options:
 |merge_bbox| Merge bbox flag| True, False|
 |weight_exp| exponential weighting specification  | |
 |backbone|  Backbone for Matrix Nets| resnet50, resnet100, resnet152, resnext101  
+
+## Contributions
+
+Contributions to this project are welcome. Please make a pull request and we will attend to it as soon as possible. 
+
+Also if you extend this model to other datasets or build cool projects using it we'd love to hear from you. 
 
 ## Acknowledgements
 
