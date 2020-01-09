@@ -113,10 +113,10 @@ python test.py <config_file> --testiter <iter> --split validation
 
 We provide pre-trained models for Resnet-50 and Resnet-152 for both Anchors and Corners.
 
-[Resnet-50+Corners](https://dl.dropboxusercontent.com/s/zmhhvtm2wvf78qv/MatrixNetCorners_Resnet50.pkl)  
-[Resnet-152+Corners](https://dl.dropboxusercontent.com/s/zmhhvtm2wvf78qv/MatrixNetCorners_Resnet152.pkl)  
+[Resnet-50+Corners](https://dl.dropboxusercontent.com/s/8u1e7ctq7ppaaa5/MatrixNetCorners_Resnet50.pkl)  
+[Resnet-152+Corners](https://dl.dropboxusercontent.com/s/0vubld80o9zxb7w/MatrixNetCorners_Resnet152.pkl)  
 [Resnet-50+Anchors](https://dl.dropboxusercontent.com/s/zmhhvtm2wvf78qv/MatrixNetAnchors_Resnet50.pkl)  
-[Resnet-152+Anchors](https://dl.dropboxusercontent.com/s/zmhhvtm2wvf78qv/MatrixNetAnchors_Resnet152.pkl)  
+[Resnet-152+Anchors](https://dl.dropboxusercontent.com/s/aa19s8orl5a72uk/MatrixNetAnchors_Resnet152.pkl)  
 
 
 Please copy the pre-trained models into the following directory under matrixnets.
