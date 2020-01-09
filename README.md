@@ -1,6 +1,6 @@
 ## MatrixNets
 
-MatrixNets is an aspect ratio aware deep learning architecture for object detection. We implemented matrixnets anchors and corners. For more details, please refer to the papers linked below.
+MatrixNetis a scale and aspect ratio aware deep learning architecture for object detection. We implemented matrixnets anchors and corners. For more details, please refer to the papers linked below.
 
 
 <p align="center">
