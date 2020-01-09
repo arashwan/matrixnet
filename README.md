@@ -48,7 +48,7 @@ Following table gives the AP for Corners and Anchors with different backbones (f
 |Resnet-101-X  |42.3 | 42.3 |
 |Resnet-152-X | 43.6 | 44.7|
 
-### Sample Images
+### Sample Images with Detections for both Architectures
 
 ![alt text](https://github.com/arashwan/matrixnet/blob/master/images//figure7.png)
 
