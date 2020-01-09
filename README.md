@@ -1,13 +1,12 @@
 ## MatrixNets
 
-MatrixNetis a scale and aspect ratio aware deep learning architecture for object detection. We implemented matrixnets anchors and corners. For more details, please refer to the papers linked below.
-
+MatrixNetis a scale and aspect ratio aware deep learning architecture for object detection. We implemented matrixnets anchors (centers) and corners. For more details, please refer to the papers linked below.
 
 <p align="center">
 <img src="https://github.com/arashwan/matrixnet/blob/master/images/figure5.png" height="250px">
   </p>
   
- We have two implementations based on Corners and Anchor-Centers:
+ We have two implementations based on Corners and Anchor (Centers):
 <p align="center">      <img src="https://github.com/arashwan/matrixnet/blob/master/images/figure6.png" height="200px" caption=
                              "Corners"> 
 <img src="https://github.com/arashwan/matrixnet/blob/master/images/figure_centers.png" height="200px"> 
