@@ -17,7 +17,7 @@ from db.datasets import datasets
 torch.backends.cudnn.benchmark = False
 
 def parse_args():
-    parser = argparse.ArgumentParser(description="Test CornerNet")
+    parser = argparse.ArgumentParser(description="Test MatrixNet")
     parser.add_argument("cfg_file", help="config file", type=str)
     parser.add_argument("--testiter", dest="testiter",
                         help="test at iteration i",
