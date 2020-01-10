@@ -27,16 +27,17 @@ One of the capabilities offered by MatrixNets is to be able to choose which laye
 
 Example 1:
 
-In the paper, we use a 19-layer MatrixNet by ignoring the left top and bottom right corners of the 5x5 matrix.
+In the paper, we use a 19-layer MatrixNet by ignoring the left top and bottom right corners of the 5x5 matrix. The range for the base layer (top left) is [24,48,24,48].
 
 The corresonding layer range would look like:
 
-[[[12,48,12,48],[48,96,12,48],[96,192,12,48], -1, -1],
-[[12,48,48,96],[48,96,48,96],[96,192,48,96],[192,384,48,96], -1],
-[[12,48,96,192],[48,96,96,192],[96,192,96,192],[192,384,96,192],[384,2000,96,192]],
-[-1, [48,96,192,384],[96,192,192,384],[192,384,192,384],[384,2000,192,384]],
-[-1, -1, [96,192,384,2000],[192,384,384,2000],[384,2000,384,2000]]]
+[[[0,48,0,48],[48,96,0,48],[96,192,0,48], -1, -1],
+[[0,48,48,96],[48,96,48,96],[96,192,48,96],[192,384,0,96], -1],
+[[0,48,96,192],[48,96,96,192],[96,192,96,192],[192,384,96,192],[384,2000,96,192]],
+[-1, [0,96,192,384],[96,192,192,384],[192,384,192,384],[384,2000,192,384]],
+[-1, -1, [0,192,384,2000],[192,384,384,2000],[384,2000,384,2000]]]
 
+Note that we extended the range for the layers on the boundary to include any objects that are out of range.
 
 ### Performance
 
@@ -98,9 +99,9 @@ To train a model:
 python train.py <config_file>
 ```
 
-We provide the configuration file (`MatrixNetsCorners.json`). 
+We provided four different configuration files under config directory for training both MatrixNetCorners and MatrixNetCenters. 
 
-To train MatrixNetsCorners with Resnet50:
+To train MatrixNets:
 ```
 python train.py MatrixNetsCornersResnet50
 ```
