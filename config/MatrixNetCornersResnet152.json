@@ -58,7 +58,7 @@
 	"cutout":true,
         "top_k": 50,
         "categories": 80,
-        "matching_threshold": 0.2,
+        "matching_threshold": 0.3,
         "nms_threshold": 0.5,
         "max_per_image": 100,
         "merge_bbox": true,
