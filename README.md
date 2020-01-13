@@ -23,7 +23,7 @@ Code for reproducing the results in the following paper:
 
 ### Selecting Layers in MatrixNets
 
-One of the capabilities offered by MatrixNets is to be able to choose which layers to use for training and inference. This means that the user can choose which scales of the image to use for training and testing. `The layer_range` is defined as a 3D matrix were the outer matrix is 5x5, and each entry of this matrix is either a 1D matrix of [y_min, y_max, x_min, x_max] or -1 if we do not want to include this layer.
+One of the capabilities offered by MatrixNets is to be able to choose which layers to use for training and inference. Although we used 19 layers matrixnet in the paper, we implemented matrixnet here such that any matrixnet design can be specified by setting the `layer_range` variable in the config file. The `layer_range` is defined as a 3D matrix were the outer matrix is 5x5, and each entry of this matrix is either a 1D matrix of [y_min, y_max, x_min, x_max] or -1 if we do not want to include this layer.
 
 Example 1:
 
