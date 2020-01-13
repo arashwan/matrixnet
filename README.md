@@ -18,7 +18,7 @@ MatrixNetis a scale and aspect ratio aware deep learning architecture for object
 Code for reproducing the results in the following paper:
 
 [**Matrix Nets (ICCV'19) (short paper)**](https://arxiv.org/abs/1908.04646)  
-[**Matrix Nets (long paper)**]()
+[**Matrix Nets (long paper)**](https://arxiv.org/abs/2001.03194)
 
 
 ### Selecting Layers in MatrixNets
