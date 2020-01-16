@@ -92,7 +92,7 @@ make
 - Copy the training/validation/testing images to the corresponding directories according to the annotation files
 
 ## Training and Evaluation
-To train and evaluate a network, one will need to create a configuration file, which defines the hyperparameters, and a model file, which defines the network architecture. The configuration file should be in JSON format and placed in `config/`. Each configuration file should have a corresponding model file in `models/` (specified by `snapshot_name` in the config file). i.e. 
+To train and evaluate a network, one will need to create a configuration file, which defines the hyperparameters, and a model file, which defines the network architecture. The configuration file should be in JSON format and placed in `config/`. Each configuration file should have a corresponding model file in `models/` (specified by `model_name` in the config file). i.e. 
 
 To train a model:
 ```
@@ -110,6 +110,8 @@ To evaluate the trained model:
 ```
 python test.py <config_file> --testiter <iter> --split validation
 ```
+
+`--debug` flag can be used to save the first 200 images with detections under results directory.
 
 ### Pretrained Models
 
