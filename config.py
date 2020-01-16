@@ -32,9 +32,9 @@ class Config:
         self._configs["result_dir"] = "./results"
 
         # Split
-        self._configs["train_split"] = "trainval"
-        self._configs["val_split"]   = "minival"
-        self._configs["test_split"]  = "testdev"
+        self._configs["train_split"] = "train2017"
+        self._configs["val_split"]   = "val2017"
+        self._configs["test_split"]  = "testdev2017"
 
         # Rng
         self._configs["data_rng"] = np.random.RandomState(123)
