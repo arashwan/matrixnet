@@ -313,7 +313,7 @@ def _decode(
         else:
             detections = torch.cat([detections, torch.cat([bboxes, scores, tl_scores, br_scores, clses], dim=2)], dim = 1)
 
-    top_scores, top_inds = torch.topk(detections[:, :, 5], 5 * num_dets)
+    top_scores, top_inds = torch.topk(detections[:, :, 4], 5 * num_dets)
     detections = _gather_feat(detections, top_inds)
     return detections
 
