@@ -85,13 +85,17 @@ def layer_map(width, height, width_thresholds, height_thresholds):
             break
     return x_layer, y_layer
 
-def layer_map_using_ranges(width, height, layer_ranges):
+def layer_map_using_ranges(width, height, layer_ranges, fpn_flag=0):
     layers = []
    
     for i, layer_range in enumerate(layer_ranges):
-       
-        if (width >= 0.8 * layer_range[2]) and (width <= 1.3 * layer_range[3]) and (height >= 0.8 * layer_range[0]) and (height <= 1.3 * layer_range[1]):
-            layers.append(i)
+        if fpn_flag ==0:
+            if (width >= 0.8 * layer_range[2]) and (width <= 1.3 * layer_range[3]) and (height >= 0.8 * layer_range[0]) and (height <= 1.3 * layer_range[1]):
+                layers.append(i)
+            else:
+                max_dim = max(height, width)
+                if max_dim <= 1.3*layer_range[1] and max_dim >= 0.8* layer_range[0]:
+                    layers.append(i)
     if len(layers) > 0:
         return layers
     else:
@@ -159,7 +163,7 @@ def samples_MatrixNetCorners(db, k_ind, data_aug, debug):
                 _dict[(i+1)*10+(j+1)]=e
     
     layers_range=[_dict[i] for i in sorted(_dict)]
-     
+    fpn_flag = set(_dict.keys()) == set([11,22,33,44,55]) 
     # allocating memory
     images      = np.zeros((batch_size, 3, input_size[0], input_size[1]), dtype=np.float32)
     tl_heatmaps = [np.zeros((batch_size, categories, output_size[0], output_size[1]), dtype=np.float32) for output_size in output_sizes]
@@ -233,7 +237,7 @@ def samples_MatrixNetCorners(db, k_ind, data_aug, debug):
         images[b_ind] = image.transpose((2, 0, 1))
 
         for ind, detection in enumerate(detections):
-            for olayer_idx in layer_map_using_ranges(detection[2] - detection[0], detection[3] - detection[1],layers_range):
+            for olayer_idx in layer_map_using_ranges(detection[2] - detection[0], detection[3] - detection[1],layers_range, fpn_flag):
             
                 width_ratio = output_sizes[olayer_idx][1] / input_size[1]
                 height_ratio = output_sizes[olayer_idx][0] / input_size[0]
@@ -346,7 +350,8 @@ def samples_MatrixNetAnchors(db, k_ind, data_aug, debug):
                 _dict[(i+1)*10+(j+1)]=e
     
     layers_range=[_dict[i] for i in sorted(_dict)]
-
+    fpn_flag = set(_dict.keys()) == set([11,22,33,44,55])
+    print("FPN" , fpn_flag)
     # allocating memory
     images      = np.zeros((batch_size, 3, input_size[0], input_size[1]), dtype=np.float32)
     anchors_heatmaps = [np.zeros((batch_size, categories, output_size[0], output_size[1]), dtype=np.float32) for output_size in output_sizes]
@@ -401,7 +406,7 @@ def samples_MatrixNetAnchors(db, k_ind, data_aug, debug):
         images[b_ind] = image.transpose((2, 0, 1))
 
         for ind, detection in enumerate(detections):
-            for olayer_idx in layer_map_using_ranges(detection[2] - detection[0], detection[3] - detection[1],layers_range):
+            for olayer_idx in layer_map_using_ranges(detection[2] - detection[0], detection[3] - detection[1],layers_range, fpn_flag):
             
                 width_ratio = output_sizes[olayer_idx][1] / input_size[1]
                 height_ratio = output_sizes[olayer_idx][0] / input_size[0]
