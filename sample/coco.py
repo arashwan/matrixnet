@@ -85,6 +85,7 @@ def layer_map(width, height, width_thresholds, height_thresholds):
             break
     return x_layer, y_layer
 
+
 def layer_map_using_ranges(width, height, layer_ranges, fpn_flag=0):
     layers = []
    
@@ -92,10 +93,10 @@ def layer_map_using_ranges(width, height, layer_ranges, fpn_flag=0):
         if fpn_flag ==0:
             if (width >= 0.8 * layer_range[2]) and (width <= 1.3 * layer_range[3]) and (height >= 0.8 * layer_range[0]) and (height <= 1.3 * layer_range[1]):
                 layers.append(i)
-            else:
-                max_dim = max(height, width)
-                if max_dim <= 1.3*layer_range[1] and max_dim >= 0.8* layer_range[0]:
-                    layers.append(i)
+        else:
+            max_dim = max(height, width)
+            if max_dim <= 1.3*layer_range[1] and max_dim >= 0.8* layer_range[0]:
+                layers.append(i)
     if len(layers) > 0:
         return layers
     else:
