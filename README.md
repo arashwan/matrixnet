@@ -1,3 +1,5 @@
+**Update: Detectron2 version of matrixnets coming out soon**
+
 ## MatrixNets
 
 MatrixNetis a scale and aspect ratio aware deep learning architecture for object detection. We implemented matrixnets anchors (centers) and corners. For more details, please refer to the papers linked below.
