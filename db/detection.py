@@ -11,6 +11,7 @@ class DETECTION(BASE):
         self._configs["rand_scale_max"]  = 1.4
         self._configs["rand_scale_step"] = 0.2
         self._configs["backbone"]        = "resnext101_32x8d"
+        self._configs["dcn"]             = "false"
         self._configs["input_size"]      = [511]
 
 

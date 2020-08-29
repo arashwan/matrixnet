@@ -1,7 +1,7 @@
 {
     "system": {
         "dataset": "MSCOCO",
-        "batch_size": 23,
+        "batch_size": 5,
         
 	"model_name": "MatrixNetCorners",
         "train_split": "train2017",
@@ -19,7 +19,7 @@
         "stepsize": 300000,
         "snapshot": 10000,
 
-        "chunk_sizes": [5,6,6,6],
+        "chunk_sizes": [2,3],
         "cache_dir" : "./MatrixNetCornersResnet50_48LayerRange_512isize",
 	"data_dir": "./data/"
     },
@@ -52,7 +52,7 @@
 		 [-1, -1, [0,192,384,2000],[192,384,384,2000],[384,2000,384,2000]]] ,
         
 
-        "test_scales": [1],
+    "test_scales": [1],
 	"test_image_max_dim":900,
 	"test_flip_images":true,
 	"cutout":true,
@@ -63,7 +63,8 @@
         "max_per_image": 100,
         "merge_bbox": true,
         "weight_exp": 6,
-	"backbone": "resnet50"
+	"backbone": "resnet50",
+    "dcn": true
     }
 }
 
