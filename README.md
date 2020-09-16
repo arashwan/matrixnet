@@ -1,4 +1,5 @@
-**Update: Detectron2 version of matrixnets coming out soon**
+**Update: This branch is compatible with DCNs using MMdetection code**
+
 
 ## MatrixNets
 
@@ -175,6 +176,7 @@ List of avialble configuration options:
 |merge_bbox| Merge bbox flag| True, False|
 |weight_exp| exponential weighting specification  | |
 |backbone|  Backbone for Matrix Nets| resnet50, resnet100, resnet152, resnext101  
+|dcn| Build Matrixnets using DCN |True (default is false if nothing given) 
 
 ## Contributions
 
