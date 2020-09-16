@@ -72,15 +72,24 @@ class MatrixNetCorners(nn.Module):
                 )
                 _resnet.init_weights(pretrained ='torchvision://resnet152')
                 
-        else:    
+        else:   
+
             if self.resnet == "resnext101_32x8d":
                 _resnet = resnext101_32x8d(pretrained=True)
             elif self.resnet == "resnet101":
-                _resnet = resnet101_features(pretrained =True)
+                _resnet  = ResNet( 101,
+                )
+                _resnet.init_weights(pretrained ='torchvision://resnet101')
             elif self.resnet == "resnet50":
-                _resnet = resnet50_features(pretrained =True)
+                _resnet = ResNet(50,                
+                                )
+                _resnet.init_weights(pretrained ='torchvision://resnet50')
             elif self.resnet == "resnet152":
-                _resnet = resnet152_features(pretrained =True)
+                _resnet = ResNet(
+                                 depth=152
+                                        
+                )
+                _resnet.init_weights(pretrained ='torchvision://resnet152')
 #         pdb.set_trace()
         try: 
             self.feature_pyramid = MatrixNet(_resnet, layers)
