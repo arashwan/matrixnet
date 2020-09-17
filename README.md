@@ -1,5 +1,7 @@
 **Update: This branch is compatible with DCNs using MMdetection code**
 
+Add dcn : "true" in the config. Results with DCN comming soon. 
+
 
 ## MatrixNets
 
