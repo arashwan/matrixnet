@@ -7,6 +7,8 @@ from torch.autograd import Variable
 from .resnet_features import resnet152_features, resnet50_features, resnet18_features, resnet101_features, resnext101_32x8d, wide_resnet101_2
 from .py_utils.utils import conv1x1, conv3x3
 from .matrixnet import _sigmoid, MatrixNet, _gather_feat, _tranpose_and_gather_feat, _topk, _nms
+from mmcv.ops import DeformConv2d
+from .resnet import ResNet
 
 
 class SubNet(nn.Module):
@@ -45,20 +47,45 @@ class SubNet(nn.Module):
 
     
 class MatrixNetAnchors(nn.Module):
-    def __init__(self, classes, resnet, layers):
+    def __init__(self, classes, resnet, layers, dcn):
         super(MatrixNetAnchors, self).__init__()
         self.classes = classes
         self.resnet = resnet
-
-        if self.resnet == "resnext101_32x8d":
-            _resnet = resnext101_32x8d(pretrained=True)
-        elif self.resnet == "resnet101":
-            _resnet = resnet101_features(pretrained =True)
-        elif self.resnet == "resnet50":
-            _resnet = resnet50_features(pretrained =True)
-        elif self.resnet == "resnet152":
-            _resnet = resnet152_features(pretrained =True)
-
+        self.dcn = dcn
+        
+        if self.dcn:
+            if self.resnet == "resnext101_32x8d":
+                __resnet = resnext101_32x8d(pretrained=True)
+            elif self.resnet == "resnet101":
+                _resnet  = ResNet( 101,
+                        dcn = dict(type='DCNv2', deform_groups=1, fallback_on_stride=False),
+                        stage_with_dcn=(False, True, True, True)
+                        )
+                _resnet.init_weights(pretrained ='torchvision://resnet101')
+            elif self.resnet == "resnet50":
+                _resnet = ResNet(50,
+                        dcn = dict(type='DCNv2', deform_groups=1, fallback_on_stride=False),
+                        stage_with_dcn=(False, True, True, True)
+                        )
+                _resnet.init_weights(pretrained ='torchvision://resnet50')
+            elif self.resnet == "resnet152":
+                _resnet = ResNet(
+                        depth=152,dcn = dict(type='DCNv2', deform_groups=1, fallback_on_stride=False),
+                        stage_with_dcn=(False, True, True, True)
+                        )
+                _resnet.init_weights(pretrained ='torchvision://resnet152')
+        else:
+            if self.resnet == "resnext101_32x8d":
+                _resnet = resnext101_32x8d(pretrained=True)
+            elif self.resnet == "resnet101":
+                _resnet  = ResNet( 101)
+                _resnet.init_weights(pretrained ='torchvision://resnet101')
+            elif self.resnet == "resnet50":
+                _resnet = ResNet(50)
+                _resnet.init_weights(pretrained ='torchvision://resnet50')
+            elif self.resnet == "resnet152":
+                _resnet = ResNet(depth=152)
+                _resnet.init_weights(pretrained ='torchvision://resnet152')
         try: 
             self.matrix_net = MatrixNet(_resnet, layers)
         except : 
@@ -83,9 +110,10 @@ class model(nn.Module):
         classes = db.configs["categories"]
         resnet  = db.configs["backbone"]
         layers  = db.configs["layers_range"]
-        self.net = MatrixNetAnchors(classes, resnet, layers)
+        dcn  = db.configs["dcn"]
+        self.net = MatrixNetAnchors(classes, resnet, layersi, dcn)
         self._decode = _decode
-        
+    
     def _train(self, *xs):
         image = xs[0][0]
         anchors_inds = xs[1]

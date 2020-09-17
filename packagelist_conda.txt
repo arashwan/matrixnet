@@ -97,7 +97,6 @@ https://repo.anaconda.com/pkgs/main/linux-64/libopencv-3.4.2-hb342d67_1.tar.bz2
 https://repo.continuum.io/pkgs/main/linux-64/pip-19.2.2-py36_0.tar.bz2
 https://conda.anaconda.org/anaconda/linux-64/h5py-2.8.0-py36h989c5e5_3.tar.bz2
 https://repo.anaconda.com/pkgs/main/linux-64/matplotlib-3.1.0-py36h5429711_0.tar.bz2
-https://conda.anaconda.org/hcc/linux-64/pycocotools-2.0.0-py36h470a237_0.tar.bz2
 https://repo.anaconda.com/pkgs/main/linux-64/mkl-service-2.0.2-py36h7b6447c_0.tar.bz2
 https://repo.anaconda.com/pkgs/main/linux-64/mkl_fft-1.0.14-py36ha843d7b_0.tar.bz2
 https://repo.anaconda.com/pkgs/main/linux-64/numpy-1.16.4-py36h7e9f1db_0.tar.bz2
