@@ -111,7 +111,7 @@ class model(nn.Module):
         resnet  = db.configs["backbone"]
         layers  = db.configs["layers_range"]
         dcn  = db.configs["dcn"]
-        self.net = MatrixNetAnchors(classes, resnet, layersi, dcn)
+        self.net = MatrixNetAnchors(classes, resnet, layers, dcn)
         self._decode = _decode
     
     def _train(self, *xs):
