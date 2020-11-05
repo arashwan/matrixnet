@@ -118,7 +118,7 @@ class Config:
 
     @property
     def snapshot_file(self):
-        snapshot_file = os.path.join(self.snapshot_dir, self.model_name + "_{}.pkl")
+        snapshot_file = os.path.join(self.snapshot_dir, self.model_name + "latest.pkl")
         return snapshot_file
 
     @property

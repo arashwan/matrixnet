@@ -118,7 +118,7 @@ class NetworkFactory(object):
             self.model.load_state_dict(params)
 
     def save_params(self, iteration):
-        cache_file = system_configs.snapshot_file.format(iteration)
+        cache_file = system_configs.snapshot_file
         print("saving model to {}".format(cache_file))
         with open(cache_file, "wb") as f:
             params = self.model.state_dict()

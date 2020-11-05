@@ -31,7 +31,7 @@ def parse_args():
                         help="train at iteration i",
                         default=0, type=int)
     parser.add_argument("--threads", dest="threads", default=4, type=int)
-
+    parser.add_argument("--iterfile", dest = "iterfile", default = "iters.txt", type=str)
     args = parser.parse_args()
     return args
 
@@ -69,7 +69,7 @@ def init_parallel_jobs(dbs, queue, fn, data_aug):
         task.start()
     return tasks
 
-def train(training_dbs, validation_db, start_iter=0):
+def train(training_dbs, validation_db, start_iter=0, iterfile = None):
     learning_rate = system_configs.learning_rate
     max_iteration = system_configs.max_iter
     pretrained_model = system_configs.pretrain
@@ -145,7 +145,8 @@ def train(training_dbs, validation_db, start_iter=0):
 
             if iteration % snapshot == 0:
                 nnet.save_params(iteration)
-
+                with open(iterfile, "a") as myfile:
+                    myfile.write(iteration)
             if iteration % stepsize == 0:
                 learning_rate /= decay_rate
                 nnet.set_lr(learning_rate)
@@ -190,4 +191,12 @@ if __name__ == "__main__":
 
     
     print("len of db: {}".format(len(training_dbs[0].db_inds)))
-    train(training_dbs, validation_db, args.start_iter)
+    iterfile = args.iterfile
+    with open(iterfile) as f:
+        for line in f:
+            pass
+    last_line = line
+
+    start_iter = int(last_line)
+    print(start_iter)
+    train(training_dbs, validation_db, iterfile)
