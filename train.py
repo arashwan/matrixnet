@@ -146,7 +146,8 @@ def train(training_dbs, validation_db, start_iter=0, iterfile = None):
             if iteration % snapshot == 0:
                 nnet.save_params(iteration)
                 with open(iterfile, "a") as myfile:
-                    myfile.write(iteration)
+                    myfile.write("\n")
+                    myfile.write(str(iteration))
             if iteration % stepsize == 0:
                 learning_rate /= decay_rate
                 nnet.set_lr(learning_rate)
@@ -192,11 +193,22 @@ if __name__ == "__main__":
     
     print("len of db: {}".format(len(training_dbs[0].db_inds)))
     iterfile = args.iterfile
-    with open(iterfile) as f:
-        for line in f:
-            pass
-    last_line = line
+    if os.path.isfile(iterfile):
+        f_read = open(iterfile, "r")
+        l = f_read.readlines()
+        if len(l) > 0 :
+            last_line = l[-1]
+            start_iter = int(last_line)
+        else:
+            start_iter = 0
+        f_read.close()
 
-    start_iter = int(last_line)
-    print(start_iter)
-    train(training_dbs, validation_db, iterfile)
+        print(start_iter)
+
+    else:
+        start_iter  = 0 
+        f= open(iterfile,"w+")
+        f.write(str(0))
+        f.close()   
+    
+    train(training_dbs, validation_db, start_iter, iterfile)
