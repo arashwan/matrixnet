@@ -96,7 +96,7 @@ PyYAML==5.1
 pyzmq==18.0.1
 qtconsole==4.4.3
 requests==2.21.0
-rsa==4.0
+rsa==4.7
 scikit-image==0.15.0
 scipy==1.2.1
 Send2Trash==1.5.0
